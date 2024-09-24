@@ -1,267 +1,239 @@
-# Developed by : pravin kumar G
-# Register Number : 212222230109
 # COLOR_CONVERSIONS_OF-IMAGE
 ## AIM
-To write a python program using OpenCV to do the following image manipulations.
+Write a Python program using OpenCV that performs the following tasks:
 
-i) Read, display, and write an image.
+i) Read and Display an Image.
 
-ii) Access the rows and columns in an image.
+ii) 	Draw Shapes and Add Text.
 
-iii) Cut and paste a small portion of the image.
+iii) Image Color Conversion.
 
-iv)To perform the color conversion between RGB, BGR, HSV, and YCbCr color models.
+iv) Access and Manipulate Image Pixels.
+
+v) Image Resizing
+
+vi) Image Cropping
+
+vii) Image Flipping
+
+viii)	Write and Save the Modified Image
 
 
 ## Software Required:
 Anaconda - Python 3.7
 ## Algorithm:
 ### Step1:
-Choose an image and save it as a filename.jpg ,
+Load an image from your local directory and display it.
 ### Step2:
-Use imread(filename, flags) to read the file.
+o	Draw a line from the top-left to the bottom-right of the image.
+o	Draw a circle at the center of the image.
+o	Draw a rectangle around a specific region of interest in the image.
+o	Add the text "OpenCV Drawing" at the top-left corner of the image.
+
 ### Step3:
-Use imshow(window_name, image) to display the image.
+o	Convert the image from RGB to HSV and display it.
+o	Convert the image from RGB to GRAY and display it.
+o	Convert the image from RGB to YCrCb and display it.
+o	Convert the HSV image back to RGB and display it.
+
 ### Step4:
-Use imwrite(filename, image) to write the image.
+o	Access and print the value of the pixel at coordinates (100, 100).
+o	Modify the color of the pixel at (200, 200) to white.
+
 ### Step5:
-End the program and close the output image windows.
+o	Resize the original image to half its size and display it.
 ### Step6:
-Convert BGR and RGB to HSV and GRAY
+o	Crop a region of interest (ROI) from the image (e.g., a 100x100 pixel area starting at (50, 50)) and display it.
 ### Step7:
-Convert HSV to RGB and BGR
+o	Flip the original image horizontally and display it.
+o	Flip the original image vertically and display it.
+
 ### Step8:
-Convert RGB and BGR to YCrCb
-### Step9:
-Split and Merge RGB Image
-### Step10:
-Split and merge HSV Image
+o	Save the final modified image to your local directory.
+
+
 ##### Program:
-
-<table>
-  <tr>
-    <td width=50%>
-
-### i) Read and display the image
-```
-    import cv2
-    image=cv2.imread('photo.jpg')
-    image=cv2.resize(image,(400,300))
-    cv2.imshow('Image Window',image)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
- ```
-  </td>
-  <td>
-
-### OUTPUT:
-![image](https://github.com/user-attachments/assets/a98b0b9e-cd03-4682-beb0-e7991d0d2bef)
+### Developed By: pravin kumar G
+### Register Number: 212222230109
 
 
+## Output:
 
+### i)Read and Display an Image
 
-  </td>
-  </tr>
-
-   <tr>
-    <td width=50%>
-
-### ii)Write the image
-```
-    import cv2
-    image=cv2.imread('photo.jpg',0)
-    cv2.imwrite('demos.jpg',image)
-```
-  </td>
-  <td>
-
-### OUTPUT:
-![image](https://github.com/user-attachments/assets/5d2abca0-65db-46e1-a17d-776bb8a8895b)
-
-
-
-  </td>
-  </tr>
-  <tr>
-    <td width=50%>
-
-### iii)Shape of the Image
-```
-    import cv2
-    image=cv2.imread('photo.jpg',1)
-    print(image.shape)
-```
-  </td>
-  <td>
-
-### OUTPUT:
-![image](https://github.com/user-attachments/assets/6e31ce9e-41ff-4f66-bc51-54dac2b09147)
-
-
-
-  </td>
-  </tr>
-  <tr>
-    <td>
-      
-### iv)Access rows and columns
-```
-    import random
-    import cv2
-    image=cv2.imread('photo.jpg',1)
-    image=cv2.resize(image,(400,400))
-    for i in range (150,200):
-      for j in range(image.shape[1]):
-          image[i][j]=[random.randint(0,255),
-                       random.randint(0,255),
-                       random.randint(0,255)] 
-    cv2.imshow('part image',image)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-```
-  </td>
-  <td width="50%">
-
-### OUTPUT:
-![image](https://github.com/user-attachments/assets/9c743ac9-dc74-4700-98c3-450e17b7c082)
-
-
-  </td>
-  </tr>
-  <tr>
-    <td width=50%>
-      
-### v)Cut and paste portion of image
-```
-    import cv2
-    image=cv2.imread('photo.jpg',1)
-    image=cv2.resize(image,(400,400))
-    tag =image[130:200,110:190]
-    image[110:180,120:200] = tag
-    cv2.imshow('partimage1',image)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-```
-  </td>
-  <td>
-    
-### OUTPUT:
-![image](https://github.com/user-attachments/assets/e241a756-1dc5-4ab5-84b1-bfeb731bc1f1)
-
-
-
-  </td>
-  </tr>
-</table>
-
-### vi) BGR and RGB to HSV and GRAY
 ```
 import cv2
-img = cv2.imread('photo.jpg',1)
-img = cv2.resize(img,(300,200))
-cv2.imshow('Original Image',img)
-hsv1 = cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
-cv2.imshow('BGR2HSV',hsv1)
-hsv2 = cv2.cvtColor(img,cv2.COLOR_RGB2HSV)
-cv2.imshow('RGB2HSV',hsv2)
-gray1 = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-cv2.imshow('BGR2GRAY',gray1)
-gray2 = cv2.cvtColor(img,cv2.COLOR_RGB2GRAY)
-cv2.imshow('RGB2GRAY',gray2)
+# Read the image
+image = cv2.imread('Lokesh.JPG')
+# Display the image in a window
+cv2.imshow('Image Window', image)
+# Wait indefinitely for a key press
+cv2.waitKey(0)
+# Destroy all windows created by OpenCV
+cv2.destroyAllWindows()
+```
+![image](https://github.com/user-attachments/assets/f21cc1d1-82f1-48c5-a35b-e4adbe02580d)
+<br>
+<br>
+
+### ii)Draw Shapes and Add Text
+
+```
+import cv2
+
+img = cv2.imread("Lokesh.JPG")
+start=(0,0)
+stop=(500,329)
+color=(100,255,100)
+thickness=10
+res_img=cv2.circle(img,(330,225),150,(255,0,0),10)
+res_img=cv2.rectangle(img,start,stop,color,thickness)
+text = "OpenCV Drawing"
+org = (10, 30)  # top-left corner of the text string
+font = cv2.FONT_HERSHEY_SIMPLEX
+font_scale = 1
+text_color = (255, 255, 255)  # White color
+thickness = 2
+res_img = cv2.line(img,(100,200),(900,100),(200,100,205),10)
+res_img= cv2.putText(res_img, text, org, font, font_scale, text_color, thickness, cv2.LINE_AA)
+
+# Display the HSV image
+cv2.imshow('Image Window', res_img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
+![image](https://github.com/user-attachments/assets/4b8f523c-b59a-4170-83b6-1ce21605a86e)
+![image](https://github.com/user-attachments/assets/2a6a9d91-84a1-492c-9fdf-9ca5d125ee45)
+![image](https://github.com/user-attachments/assets/f3d901d2-1ff0-482b-aaef-7e54230f1696)
+![image](https://github.com/user-attachments/assets/7712f3fe-3d30-4c09-8813-3c869de1f7a4)
 
-### OUTPUT:
-![image](https://github.com/user-attachments/assets/4168991e-f144-4dd8-a4f4-deae88cf1328)
 
 
+<br>
+<br>
 
+### iii)Image Color Conversion
 
-### vii) HSV to RGB and BGR
 ```
-import cv2
-img = cv2.imread('photo.jpg')
-img = cv2.resize(img,(300,200))
-img = cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
-cv2.imshow('Original HSV Image',img)
-RGB = cv2.cvtColor(img,cv2.COLOR_HSV2RGB)
-cv2.imshow('2HSV2BGR',RGB)
-BGR = cv2.cvtColor(img,cv2.COLOR_HSV2BGR)
-cv2.imshow('HSV2RGB',BGR)
+# Read the image
+image = cv2.imread("Lokesh.JPG")
+
+# Convert to HSV color space
+img_hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+# Convert to grayscale
+img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+
+# Display the HSV image
+cv2.imshow('Image Window (HSV)', img_hsv)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
-```
 
-### OUTPUT:
-![image](https://github.com/user-attachments/assets/af8f95cc-5e09-42aa-bf29-4b1f720abf64)
-
-
-
-
-### viii) RGB and BGR to YCrCb
-```
-import cv2
-img = cv2.imread('photo.jpg')
-img = cv2.resize(img,(300,200))
-cv2.imshow('Original RGB Image',img)
-YCrCb1 = cv2.cvtColor(img, cv2.COLOR_BGR2YCrCb)
-cv2.imshow('RGB-2-YCrCb',YCrCb1)
-YCrCb2 = cv2.cvtColor(img, cv2.COLOR_RGB2YCrCb)
-cv2.imshow('BGR-2-YCrCb',YCrCb2)
+# Convert the image from RGB to YCrCb and display it
+ycrcb_image = cv2.cvtColor(image, cv2.COLOR_BGR2YCrCb)
+cv2.imshow('YCrCb Image', ycrcb_image)
 cv2.waitKey(0)
-cv2.destroyAllWindows()
-```
 
-### OUTPUT:
-![image](https://github.com/user-attachments/assets/f05e7e4c-7bcd-4c4c-b29f-ca389c2a8870)
-
-
-
-### ix) Split and merge RGB Image
-```
-import cv2
-img = cv2.imread('photo.jpg',1)
-img = cv2.resize(img,(300,200))
-R = img[:,:,2]
-G = img[:,:,1]
-B = img[:,:,0]
-cv2.imshow('R-Channel',R)
-cv2.imshow('G-Channel',G)
-cv2.imshow('B-Channel',B)
-merged = cv2.merge((B,G,R))
-cv2.imshow('Merged RGB image',merged)
+# Convert the HSV image back to RGB and display it
+hsv_to_rgb_image = cv2.cvtColor(img_hsv, cv2.COLOR_HSV2BGR)
+cv2.imshow('HSV to RGB Image', hsv_to_rgb_image)
 cv2.waitKey(0)
-cv2.destroyAllWindows()
 ```
+### Convert the image from RGB to HSV and display it:
+![image](https://github.com/user-attachments/assets/c6b5d1d6-a215-489f-b52a-71d66129309f)
 
-### OUTPUT:
-![image](https://github.com/user-attachments/assets/fddf8c78-cdd3-45d7-b62a-8473518bc35f)
+### Convert the image from RGB to GRAY and display it:
+![image](https://github.com/user-attachments/assets/f9a8df5e-3afe-4ff1-8185-1c161a1cf51e)
 
+### Convert the image from RGB to YCrCb and display it:
+![image](https://github.com/user-attachments/assets/219bb116-72e7-43b6-af84-28f92982bb7e)
 
+### Convert the HSV image back to RGB and display it:
+![image](https://github.com/user-attachments/assets/96eecc60-c49e-47b3-bf91-ac29f5b575fd)
 
+<br>
+<br>
 
-### x) Split and merge HSV Image
+### iv)Access and Manipulate Image Pixels
+
 ```
-import cv2
-img = cv2.imread("photo.jpg",1)
-img = cv2.resize(img,(300,200))
-img=cv2.cvtColor(img,cv2.COLOR_RGB2HSV)
-H,S,V=cv2.split(img)
-cv2.imshow('Hue',H)
-cv2.imshow('Saturation',S)
-cv2.imshow('Value',V)
-merged = cv2.merge((H,S,V))
-cv2.imshow('Merged',merged)
+# Step 4: Access and Manipulate Image Pixels
+# Access and print the value of the pixel at coordinates (100, 100)
+pixel_value = image[100, 100]
+print(f"Pixel value at (100, 100): {pixel_value}")
+
+# Modify the color of the pixel at (200, 200) to white
+image[200, 200] = [255, 255, 255]
+print(f"Modified pixel value at (200, 200): {image[200, 200]}")
+```
+![image](https://github.com/user-attachments/assets/66bf0b1a-3b5a-4da3-a159-90b507f5eeed)
+<br>
+<br>
+
+### v)Image Resizing
+```
+# Image Resizing
+# Resize the original image to half its size and display it
+resized_image = cv2.resize(image, (image.shape[1] // 2, image.shape[0] // 2))
+cv2.imshow('Resized Image', resized_image)
 cv2.waitKey(0)
-cv2.destroyAllWindows()
+```
+![image](https://github.com/user-attachments/assets/56c20463-efc2-4869-b6a3-e50fda8cc4fa)
+
+<br>
+<br>
+
+### vi)Image Cropping:
+
+```
+# Image Cropping
+# Crop a region of interest (100x100 pixels starting at (50, 50)) and display it
+roi = image[50:150, 50:150]
+cv2.imshow('Cropped ROI Image', roi)
+cv2.waitKey(0)
+```
+![image](https://github.com/user-attachments/assets/c9f1404f-7951-4326-bc1b-efa8acb57da6)
+
+<br>
+<br>
+
+### vii)Image Flipping
+
+```
+# Flip the original image horizontally and display it
+flipped_horizontally = cv2.flip(image, 1)
+cv2.imshow('Horizontally Flipped Image', flipped_horizontally)
+cv2.waitKey(0)
+
+# Flip the original image vertically and display it
+flipped_vertically = cv2.flip(image, 0)
+cv2.imshow('Vertically Flipped Image', flipped_vertically)
+cv2.waitKey(0)
 ```
 
-### OUTPUT:
-![image](https://github.com/user-attachments/assets/6fc9cef6-7652-491e-ad41-341f8ce3c8ab)
+### Flip the original image horizontally and display it:
+![image](https://github.com/user-attachments/assets/afc3e98b-15ef-4188-a3c9-b281eeae8db6)
+
+### Flip the original image vertically and display it:
+![image](https://github.com/user-attachments/assets/07e2be4b-5245-4cc6-aa72-05e060659bc4)
+
+<br>
+<br>
+
+### viii)Write and Save the Modified Image
+
+```
+# Step 8: Write and Save the Modified Image
+output_path = 'output.jpg'
+cv2.imwrite(output_path, image_with_text)
+print(f"Modified image saved as {output_path}")
+```
+![image](https://github.com/user-attachments/assets/6067a52f-78b8-464b-a93c-b15960bb302d)
+<br>
+<br>
 
 ## Result:
-Thus the images are read, displayed, and written ,and color conversion was performed between RGB, HSV and YCbCr color models successfully using the python program.
+Thus the images are read, displayed, and written ,and color conversion was performed  successfully using the python program.
 
 
 
